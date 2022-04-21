@@ -33,6 +33,10 @@
         ]
     ];
 
+    $headerMenu = [
+        'Introduzione', 'Norme sulla privacy', 'Termini di servizio', 'Tecnologie', 'Domande frequenti'
+    ];
+
 ?>
 
 <!DOCTYPE html>
@@ -42,16 +46,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        header{
+            border-bottom: 1px solid gray;
+            margin-bottom: 30px;
+        }
+
+        h2{
+            padding-top: 40px;
+        }
+        ul{
+            display: flex;
+        }
+
+        li{
+            list-style-type: none;
+            padding: .7rem;
+            font-size: 1.2rem;
+        }
+
+        a{
+            text-decoration: none;
+            color: #606060;
+            font-weight: 600;
+        }
+
+        .container{
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .spacing{
+            margin: 25px 0;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <ul>
+            <?php 
+                foreach($headerMenu as $element){
+                    echo '<li>' . '<a href="#">' . $element . '</a>' . '</li>';
+                }
+            ?>
+        </ul>
+    </header>
     <main>
-        <section>
+        <section class="container">
             <?php 
                 foreach($faqs as $questionElement){
-                    echo '<h2>' . $questionElement['question'] . '</h2>';
+                    echo '<h2 class="spacing">' . $questionElement['question'] . '</h2>';
 
                     foreach($questionElement['answer'] as $paragraph){
-                        echo '<p>' . $paragraph . '</p>';
+                        echo '<p class="spacing">' . $paragraph . '</p>';
                     }
                 }
             ?>
